@@ -5,7 +5,11 @@ NETWORK_VERSION="ithacanet"
 DATA_DIR="/tezos-$NETWORK_VERSION"
 
 mkdir -p $DATA_DIR
-tezos-node config init --data-dir $DATA_DIR --network $NETWORK_VERSION
+if [ ! -f "$DATA_DIR/config.json" ];
+then
+    tezos-node config init --data-dir $DATA_DIR --network $NETWORK_VERSION
+fi
+
 tezos-node identity generate --data-dir $DATA_DIR
 
 if [ ! -z "$SNAPSHOT" ]; 
