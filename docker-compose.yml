@@ -12,6 +12,8 @@ services:
     image: totar/tezos-baker:ithacanet
     volumes:
       - tezosnode:/tezos-node-ithacanet
+    environment:
+      - NODE_ENDPOINT="http://node:8732""
 
 volumes:
   tezosnode: {}
