@@ -4,6 +4,8 @@ services:
     image: totar/tezos-node:ithacanet
     volumes:
       - tezosnode:/tezos-ithacanet
+    environment:
+      - SNAPSHOT=https://snapshots-tezos.giganode.io/snapshots/testnet_20220505-000455_BKmdakT8ovR2egJu4VTUVdS5cEMzaQbt9yDrwLY1gm2nrKtrxYT.rolling
 
 volumes:
   tezosnode: {}
