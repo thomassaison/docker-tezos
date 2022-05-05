@@ -1,11 +1,18 @@
 #! /bin/sh
+set -e
 
 NETWORK_VERSION="ithacanet"
 DATA_DIR="/tezos-$NETWORK_VERSION"
 
-mkir -p $DATA_DIR
+mkdir -p $DATA_DIR
 tezos-node config init --data-dir $DATA_DIR --network $NETWORK_VERSION
 tezos-node identity generate --data-dir $DATA_DIR
-tezos-node run --rpc-addr 127.0.0.1 --data-dir $DATA_DIR
 
-echo lol
+if [ ! -z "$SNAPSHOT" ]; 
+then 
+    wget --directory-prefix=$DATA_DIR "$SNAPSHOT"
+    SNAPSHOT_NAME=$( echo $SNAPSHOT | sed "s/https:\/\/snapshots-tezos.giganode.io\/snapshots\/\(.*\)/\1/" )
+    tezos-node snapshot import $DATA_DIR/$SNAPSHOT_NAME --data-dir $DATA_DIR
+fi
+
+tezos-node run --rpc-addr 127.0.0.1 --data-dir $DATA_DIR
