@@ -3,6 +3,8 @@ FROM alpine
 RUN apk add curl
 RUN apk add wget
 
+ARG TARGETPLATFORM
+
 RUN wget https://github.com/serokell/tezos-packaging/releases/download/v12.3-1/tezos-node-arm64
 RUN curl https://raw.githubusercontent.com/zcash/zcash/master/zcutil/fetch-params.sh | sh
 
