@@ -13,7 +13,7 @@ services:
     volumes:
       - tezosnode:/tezos-node-ithacanet
     environment:
-      - NODE_ENDPOINT="http://node:8732""
+      - NODE_ENDPOINT=http://node:8732
 
 volumes:
   tezosnode: {}
