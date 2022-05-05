@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ ithacanet ]
   pull_request:
-    branches: [ main ]
+    branches: [ ithacanet ]
 
 jobs:
   tezos-node:
