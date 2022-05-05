@@ -10,7 +10,10 @@ then
     tezos-node config init --data-dir $DATA_DIR --network $NETWORK_VERSION
 fi
 
-tezos-node identity generate --data-dir $DATA_DIR
+if [ ! -f "$DATA_DIR/identity.json" ];
+then
+    tezos-node identity generate --data-dir $DATA_DIR
+fi
 
 if [ ! -z "$SNAPSHOT" ]; 
 then 
