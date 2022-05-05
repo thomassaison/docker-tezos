@@ -7,13 +7,13 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    name: Build Docker image
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build Tezos Node Docker image
-      run: docker build docker-tezos-node --file docker-tezos-node/Dockerfile --tag totar/tezos-node
+  # build:
+  #   name: Build Docker image
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #   - name: Build Tezos Node Docker image
+  #     run: docker build docker-tezos-node --file docker-tezos-node/Dockerfile --tag totar/tezos-node
 
   push:
     name: Push Docker image to Docker Hub
@@ -31,11 +31,11 @@ jobs:
         # steps:
         # run: docker push totar/tezos-node
       
-      # - name: Extract metadata (tags, labels) for Docker
-      #   id: meta
-      #   uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-      #   with:
-      #     images: totar/tezos-node
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+        with:
+          images: totar/tezos-node
       
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
