@@ -7,7 +7,7 @@ services:
     environment:
       - SNAPSHOT=https://snapshots-tezos.giganode.io/snapshots/testnet_20220506-000455_BLZuwXo6MZQWGSt38R2JsUziLAga4U7cXWaNYYGGDE5PBiYSXM6.rolling
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8732"]
+      test: ["CMD", "tezos-client", "bootstrapped"]
       interval: 30s
       timeout: 10s
       retries: 5
