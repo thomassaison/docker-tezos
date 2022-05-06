@@ -9,7 +9,7 @@ services:
   client:
     image: totar/tezos-client:ithacanet
     volumes:
-      - tezosclient:~/.tezos-client
+      - tezosclient:/root/.tezos-client
     environment:
       - PRIVATE_KEY="unencrypted:edsk3dV7TQgWP5ckriGL1hhnjUNUVUTd2446TwWYR83jCXb3zCfAWL"
     command: "tezos-client import secret key baker $PRIVATE_KEY"
@@ -18,7 +18,7 @@ services:
     restart: on-failure
     volumes:
       - tezosnode:/tezos-node-ithacanet
-      - tezosclient:~/.tezos-client
+      - tezosclient:/root/.tezos-client
     environment:
       - NODE_ENDPOINT=http://node:8732
 
