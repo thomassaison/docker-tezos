@@ -6,14 +6,15 @@ services:
       - tezosnode:/tezos-ithacanet
     environment:
       - SNAPSHOT=https://snapshots-tezos.giganode.io/snapshots/testnet_20220506-000455_BLZuwXo6MZQWGSt38R2JsUziLAga4U7cXWaNYYGGDE5PBiYSXM6.rolling
-  # baker: 
-  #   depends_on:
-  #       - "node"
-  #   image: totar/tezos-baker:ithacanet
-  #   volumes:
-  #     - tezosnode:/tezos-node-ithacanet
-  #   environment:
-  #     - NODE_ENDPOINT=http://node:8732
+  baker: 
+    # depends_on:
+    #     - "node"
+    image: totar/tezos-client:ithacanet
+    command: "tail -f /dev/null"
+    # volumes:
+    #   - tezosnode:/tezos-node-ithacanet
+    # environment:
+    #   - NODE_ENDPOINT=http://node:8732
 
 volumes:
   tezosnode: {}
