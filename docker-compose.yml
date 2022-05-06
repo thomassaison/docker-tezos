@@ -13,7 +13,7 @@ services:
       - tezosclient:/root/.tezos-client
     environment:
       - PRIVATE_KEY="unencrypted:edsk3dV7TQgWP5ckriGL1hhnjUNUVUTd2446TwWYR83jCXb3zCfAWL"
-    command: "tezos-client import secret key baker $PRIVATE_KEY"
+    command: "tezos-client --endpoint http://node:8732 bootstrapped"
   baker:
     image: totar/tezos-baker:ithacanet
     restart: on-failure
