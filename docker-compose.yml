@@ -15,9 +15,9 @@ services:
       - PRIVATE_KEY="unencrypted:edsk3dV7TQgWP5ckriGL1hhnjUNUVUTd2446TwWYR83jCXb3zCfAWL"
       - WAIT_HOSTS=node:8732
       - WAIT_HOSTS_TIMEOUT=300
-      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_SLEEP_INTERVAL=10
       - WAIT_HOST_CONNECT_TIMEOUT=30
-    command: sh -c "/wait && echo 'This is my private key ---> $PRIVATE_KEY' && tezos-client --endpoint http://node:8732 import secret key baker $PRIVATE_KEY"
+    command: sh -c "/wait && tezos-client --endpoint http://node:8732 import secret key baker unencrypted:edsk3dV7TQgWP5ckriGL1hhnjUNUVUTd2446TwWYR83jCXb3zCfAWL"
   # baker:
   #   image: totar/tezos-baker:ithacanet
   #   restart: on-failure
