@@ -17,7 +17,7 @@ services:
       - WAIT_HOSTS_TIMEOUT=300
       - WAIT_SLEEP_INTERVAL=10
       - WAIT_HOST_CONNECT_TIMEOUT=30
-    command: sh -c "/wait && tezos-client --endpoint http://node:8732 import secret key baker unencrypted:edsk3dV7TQgWP5ckriGL1hhnjUNUVUTd2446TwWYR83jCXb3zCfAWL"
+    command: sh -c "/wait && tezos-client --endpoint http://node:8732 import secret key baker unencrypted:edsk3dV7TQgWP5ckriGL1hhnjUNUVUTd2446TwWYR83jCXb3zCfAWL && tezos-client --endpoint http://node:8732 register key baker as delegate"
   baker:
     image: totar/tezos-baker:ithacanet
     restart: on-failure
