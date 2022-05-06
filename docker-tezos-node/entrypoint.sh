@@ -38,4 +38,4 @@ else
 fi
 
 echo "Running..."
-tezos-node run --rpc-addr 127.0.0.1 --data-dir $DATA_DIR
+tezos-node run --rpc-addr 127.0.0.1:8732 --data-dir $DATA_DIR
