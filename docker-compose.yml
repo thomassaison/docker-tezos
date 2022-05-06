@@ -18,15 +18,15 @@ services:
       - WAIT_SLEEP_INTERVAL=10
       - WAIT_HOST_CONNECT_TIMEOUT=30
     command: sh -c "/wait && tezos-client --endpoint http://node:8732 import secret key baker unencrypted:edsk3dV7TQgWP5ckriGL1hhnjUNUVUTd2446TwWYR83jCXb3zCfAWL"
-  # baker:
-  #   image: totar/tezos-baker:ithacanet
-  #   restart: on-failure
-  #   depends_on: [client]
-  #   volumes:
-  #     - tezosnode:/tezos-node-ithacanet
-  #     - tezosclient:/root/.tezos-client
-  #   environment:
-  #     - NODE_ENDPOINT=http://node:8732
+  baker:
+    image: totar/tezos-baker:ithacanet
+    restart: on-failure
+    depends_on: [client]
+    volumes:
+      - tezosnode:/tezos-node-ithacanet
+      - tezosclient:/root/.tezos-client
+    environment:
+      - NODE_ENDPOINT=http://node:8732
 
 volumes:
   tezosnode: {}

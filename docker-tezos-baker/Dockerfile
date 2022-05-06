@@ -12,5 +12,10 @@ RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then wget https://github.com/serok
 RUN mv tezos-baker /usr/bin/tezos-baker
 RUN chmod +x /usr/bin/tezos-baker
 
+# Add docker-compose-wait tool -------------------
+ENV WAIT_VERSION 2.7.2
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/$WAIT_VERSION/wait /wait
+RUN chmod +x /wait
+
 ADD ./entrypoint.sh /
 ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
