@@ -6,13 +6,22 @@ services:
       - tezosnode:/tezos-ithacanet
     environment:
       - SNAPSHOT=https://snapshots-tezos.giganode.io/snapshots/testnet_20220506-000455_BLZuwXo6MZQWGSt38R2JsUziLAga4U7cXWaNYYGGDE5PBiYSXM6.rolling
+  client:
+    image: totar/tezos-client:ithacanet
+    volumes:
+      - tezosclient:~/.tezos-client
+    environment:
+      - PRIVATE_KEY="unencrypted:edsk3dV7TQgWP5ckriGL1hhnjUNUVUTd2446TwWYR83jCXb3zCfAWL"
+    command: "tezos-client import secret key baker $PRIVATE_KEY"
   baker:
     image: totar/tezos-baker:ithacanet
     restart: on-failure
     volumes:
       - tezosnode:/tezos-node-ithacanet
+      - tezosclient:~/.tezos-client
     environment:
       - NODE_ENDPOINT=http://node:8732
 
 volumes:
   tezosnode: {}
+  tezosclient: {}
