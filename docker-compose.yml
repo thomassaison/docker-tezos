@@ -8,6 +8,7 @@ services:
       - SNAPSHOT=https://snapshots-tezos.giganode.io/snapshots/testnet_20220506-000455_BLZuwXo6MZQWGSt38R2JsUziLAga4U7cXWaNYYGGDE5PBiYSXM6.rolling
   client:
     image: totar/tezos-client:ithacanet
+    restart: on-failure
     volumes:
       - tezosclient:/root/.tezos-client
     environment:
@@ -16,6 +17,7 @@ services:
   baker:
     image: totar/tezos-baker:ithacanet
     restart: on-failure
+    depends_on: [client]
     volumes:
       - tezosnode:/tezos-node-ithacanet
       - tezosclient:/root/.tezos-client
