@@ -26,6 +26,12 @@ then
     echo "Import snapshot..."
     wget --directory-prefix=/ "$SNAPSHOT"
     SNAPSHOT_NAME=$( echo $SNAPSHOT | sed "s/https:\/\/snapshots-tezos.giganode.io\/snapshots\/\(.*\)/\1/" )
+
+    # Clean directory
+    if [ -d "$DATA_DIR/context" ]; then rm -rf "$DATA_DIR/context"; fi
+    if [ -d "$DATA_DIR/store" ]; then rm -rf "$DATA_DIR/store"; fi
+    if [ -f "$DATA_DIR/lock" ]; then rm -f "$DATA_DIR/lock"; fi
+
     tezos-node snapshot import /$SNAPSHOT_NAME --data-dir $DATA_DIR
 else
     echo "No snapshot prodided"
